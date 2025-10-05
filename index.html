@@ -1,26 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo app</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="todo_container">
         <h1>Todo App</h1>
-         <div class="task_tracker">
+        <div class="task_tracker">
             <div class="progress">
                 <h1>Remarks</h1>
-                 <div class="progress_bar"></div>
+                <div class="progress_bar"></div>
             </div>
             <div class="task_completion_rate">
-               2/3
+                2/3
             </div>
-         </div>
+        </div>
+
+        <div class="task_section">
+            <div class="task_input_area">
+                <input type="text" class="task_input" placeholder="Add a new task">
+                <button class="task_add_btn">+</button>
+            </div>
+
+            <div class="task">
+                <div class="input_task">
+                    <label>
+                        <input type="radio"> Wash my hair
+                    </label>
+                </div>
+                <button>
+                    <img src="assets/edit.png.png" alt="icon" width="27" height="27">
+
+                </button>
+                <button>
+                    <img src="assets/delete.png" alt="icon" width="20" height="20">
+
+                </button>
+
+
+            </div>
+        </div>
+
     </div>
     <script src="script.js"></script>
 
 </body>
+
 </html>
