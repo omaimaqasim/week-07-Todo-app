@@ -11,22 +11,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(240, 123, 123);
+     background-image: url(../assets/todo_background.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
     font-family: cursive;
+    color: white;
 }
 
 /* decorating todo container */
 .todo_container {
-    border: 2px solid black;
+    border: 2px solid rgba(200, 197, 197, 0.431);
+    box-shadow: 0px 0px 4px 0px rgba(200, 197, 197, 0.401);
     padding: 25px;
-    border-radius: 5px;
+    border-radius: 10px;
     max-width: 500px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(5px);
 }
+
+
 
 .todo_container h1 {
     font-family: "Caveat", cursive;
@@ -40,10 +48,12 @@ body {
     justify-content: space-between;
     width: 100%;
     padding: 20px;
-    border: solid black;
+    border: 2px solid rgba(200, 197, 197, 0.431);
+    box-shadow: 0px 0px 4px 0px rgba(200, 197, 197, 0.401);
     border-radius: 5px;
     margin: 15px 0px;
     font-family: cursive;
+
 }
 
 .progress h1 {
@@ -64,7 +74,6 @@ body {
 }
 
 .task_completion_rate {
-    border: solid black;
     font-size: 2.5rem;
     padding: 10px;
     border-radius: 50%;
@@ -73,6 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 
@@ -131,12 +141,12 @@ body {
 
 .input_task {
     width: 80%;
-        font-size: 18px;
+    font-size: 18px;
 }
 
 .task button {
-    width: 30px;
-    height: 30px;
+    width: 9px;
+    height: 9px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,11 +154,33 @@ body {
     border-radius: 50%;
     margin-right: 7px;
 }
+
 label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* checkbox design */
+.input_task input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: #ffffff;
+    background-color: blue;
+    text-align: center;
 }
 
 
+
+/* Add a checkmark */
+.input_task input[type="checkbox"]:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 22px;
+}

@@ -1,0 +1,5 @@
+.unique_back{
+     background: linear-gradient(135deg, rgba(90, 0, 150, 0.747), rgba(0, 80, 200, 0.614));
+        border: 1px solid rgba(18, 18, 18, 0.3);
+        box-shadow: 0px 0px 10px rgba(120, 80, 255, 0.4);
+}
