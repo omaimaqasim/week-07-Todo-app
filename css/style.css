@@ -11,7 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-     background-image: url(../assets/todo_background.jpg);
+    background-image: url(../assets/todo_background.jpg);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
@@ -99,6 +99,9 @@ body {
     border: none;
     padding: 18px 20px;
     border-radius: 30px;
+       font-size: 18px;
+    color: rgb(255, 255, 255);
+    outline: gray;
 }
 
 .task_input::placeholder {
@@ -125,17 +128,20 @@ body {
     width: 43px;
     border-radius: 50%;
     border: none;
+    cursor: pointer;
 }
+
 
 /* decorating task div */
 
 .task {
     width: 100%;
-    border: solid black;
+    background-color: rgba(49, 49, 49, 0.744);
     display: flex;
     align-items: center;
     border-radius: 30px;
     padding: 10px;
+    margin-bottom: 10px;
 
 }
 
@@ -143,6 +149,7 @@ body {
     width: 80%;
     font-size: 18px;
 }
+
 
 .task button {
     width: 9px;
@@ -159,8 +166,8 @@ label {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 /* checkbox design */
@@ -184,3 +191,4 @@ label {
     color: white;
     font-size: 22px;
 }
+
