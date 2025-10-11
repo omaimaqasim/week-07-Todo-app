@@ -13,7 +13,7 @@ task_add_btn.addEventListener("click", () => {
         task_section.insertAdjacentHTML("beforeend", `<div class="task">
                 <div class="input_task">
                     <label>
-                        <input class="unique_back" type="checkbox"> ${current_task}
+                        <input class="unique_back" type="checkbox"> <span class = "task_text">${current_task}</span>
                     </label>
                 </div>
                 <button class = "edit_btn">
@@ -36,14 +36,25 @@ task_add_btn.addEventListener("click", () => {
 let delete_btn = document.querySelector(".delete_btn")
 
 task_section.addEventListener("click" ,(e)=>{
-
     // add event on delete_btn
     if (e.target.closest(".delete_btn")) {
         e.target.closest(".task").remove()
     }
 
     // add event on edit_btn 
+    if (e.target.closest(".edit_btn")) {
+        let task = e.target.closest(".task")
+        let task_text = task.querySelector(".input_task label span")
+
+        task_text.innerHTML =  `<input type="text" value = "${task_text.textContent}">`
+       
+    //    pending 
+   
+        
+    }
 })
+
+
 
 
   
