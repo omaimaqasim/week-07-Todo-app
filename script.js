@@ -46,9 +46,19 @@ task_section.addEventListener("click" ,(e)=>{
         let task = e.target.closest(".task")
         let task_text = task.querySelector(".input_task label span")
 
+        // make task_text editable
         task_text.innerHTML =  `<input type="text" value = "${task_text.textContent}">`
-       
-    //    pending 
+     
+        // again make task_text uneditable
+         let input_text = task_text.querySelector("input");
+
+        input_text.addEventListener("keydown" ,(e)=>{
+           
+            if (e.key==="Enter") {
+               task_text.innerHTML = input_text.value
+               
+            }
+        })
    
         
     }
