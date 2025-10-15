@@ -1,70 +1,74 @@
+// ==============================
+// 🌼 ELEMENT REFERENCES
+// ==============================
+let task_input = document.querySelector(".task_input");
+let task_add_btn = document.querySelector(".task_add_btn");
+let task_section = document.querySelector(".task_section");
 
-let task_input = document.querySelector(".task_input")
-
-let task_add_btn = document.querySelector(".task_add_btn")
-
-let task_section = document.querySelector(".task_section")
-
-
-// add listener to + task add btn
+// ==============================
+// ➕ ADD NEW TASK
+// ==============================
 task_add_btn.addEventListener("click", () => {
-    let current_task = task_input.value
-    if (task_input.value !== "") {
-        task_section.insertAdjacentHTML("beforeend", `<div class="task">
+    let current_task = task_input.value;
+
+    // Only add task if input is not empty
+    if (current_task !== "") {
+        task_section.insertAdjacentHTML("beforeend", `
+            <div class="task">
                 <div class="input_task">
-                    <label>
-                        <input class="unique_back" type="checkbox"> <span class = "task_text">${current_task}</span>
-                    </label>
+                    <div class="task_type">
+                        <input class="unique_back" type="checkbox">
+                        <span class="task_text">${current_task}</span>
+                    </div>
                 </div>
-                <button class = "edit_btn">
+
+                <button class="edit_btn">
                     <img src="assets/edit.png" alt="icon" width="24" height="24">
-
                 </button>
-                <button class = "delete_btn">
+
+                <button class="delete_btn">
                     <img src="assets/delete.png" alt="icon" width="18" height="18">
-
                 </button>
+            </div>
+        `);
 
-
-            </div>`)
-            task_input.value = ""
+        // Clear input after adding
+        task_input.value = "";
     }
-})
+});
 
+// ==============================
+// 🗑️ DELETE & ✏️ EDIT BUTTON HANDLER
+// ==============================
+task_section.addEventListener("click", (e) => {
 
-// add listener to task_section for handling delete and edit_btn
-let delete_btn = document.querySelector(".delete_btn")
-
-task_section.addEventListener("click" ,(e)=>{
-    // add event on delete_btn
+    // ---------- DELETE BUTTON ----------
     if (e.target.closest(".delete_btn")) {
-        e.target.closest(".task").remove()
+        e.target.closest(".task").remove();
     }
 
-    // add event on edit_btn 
+    // ---------- EDIT BUTTON ----------
     if (e.target.closest(".edit_btn")) {
-        let task = e.target.closest(".task")
-        let task_text = task.querySelector(".input_task label span")
+        let task = e.target.closest(".task");
+        let task_text = task.querySelector(".input_task span");
+        let exist_input = task_text.querySelector("input");
 
-        // make task_text editable
-        task_text.innerHTML =  `<input type="text" value = "${task_text.textContent}">`
-     
-        // again make task_text uneditable
-         let input_text = task_text.querySelector("input");
+        // If there is no input, create one for editing
+        if (!exist_input) {
+            task_text.innerHTML = `<input type="text" value="${task_text.textContent}">`;
 
-        input_text.addEventListener("keydown" ,(e)=>{
-           
-            if (e.key==="Enter") {
-               task_text.innerHTML = input_text.value
-               
-            }
-        })
-   
-        
+            // When pressing Enter, save edited text
+            let input_text = task_text.querySelector("input");
+            input_text.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    task_text.innerHTML = input_text.value;
+                }
+            });
+        }
+
+        // If input already exists, save its value directly
+        else {
+            task_text.textContent = exist_input.value;
+        }
     }
-})
-
-
-
-
-  
+});

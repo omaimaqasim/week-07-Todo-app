@@ -3,3 +3,6 @@ not then it goes to its parents
 
 2.Event Delegation:
 It means putting one event listener on a parent element to handle events from its child elements using event bubbling.
+
+3. we use label to add text with form elements like input textarea etc as they dont 
+include text 
