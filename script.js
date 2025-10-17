@@ -35,6 +35,18 @@ task_add_btn.addEventListener("click", () => {
         // Clear input after adding
         task_input.value = "";
     }
+
+    // logic for task completion rate
+    let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length
+      let task_completion = document.querySelector(".task_completion_rate")
+       let completed_tasks = 0
+       let checkboxes = document.querySelectorAll("input[type='checkbox']");
+       Array.from(checkboxes).forEach(checkbox=>{
+        if (checkbox.checked) {
+            completed_tasks++
+        }
+       })
+      task_completion.textContent = completed_tasks +"/" + TOtal_tasks
 });
 
 // ==============================
@@ -72,3 +84,5 @@ task_section.addEventListener("click", (e) => {
         }
     }
 });
+
+
