@@ -13,7 +13,9 @@ task_add_btn.addEventListener("click", () => {
 
     // Only add task if input is not empty
     if (current_task !== "") {
-        task_section.insertAdjacentHTML("beforeend", `
+        task_section.insertAdjacentHTML(
+            "beforeend",
+            `
             <div class="task">
                 <div class="input_task">
                     <div class="task_type">
@@ -30,23 +32,17 @@ task_add_btn.addEventListener("click", () => {
                     <img src="assets/delete.png" alt="icon" width="18" height="18">
                 </button>
             </div>
-        `);
+            `
+        );
 
         // Clear input after adding
         task_input.value = "";
     }
 
-    // logic for task completion rate
-    let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length
-      let task_completion = document.querySelector(".task_completion_rate")
-       let completed_tasks = 0
-       let checkboxes = document.querySelectorAll("input[type='checkbox']");
-       Array.from(checkboxes).forEach(checkbox=>{
-        if (checkbox.checked) {
-            completed_tasks++
-        }
-       })
-      task_completion.textContent = completed_tasks +"/" + TOtal_tasks
+    // Logic for total task to complete
+    let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length;
+    let task_completion = document.querySelector(".task_completion_rate");
+    task_completion.textContent = "0/" + TOtal_tasks;
 });
 
 // ==============================
@@ -74,15 +70,28 @@ task_section.addEventListener("click", (e) => {
             input_text.addEventListener("keydown", (e) => {
                 if (e.key === "Enter") {
                     task_text.innerHTML = input_text.value;
+
+                    // When enter then checkbox will be cleared
+                    let task_checkbox = task_text.closest(".task_type").querySelector("input");
+                    task_checkbox.checked = false;
                 }
             });
-        }
-
+        } 
         // If input already exists, save its value directly
         else {
             task_text.textContent = exist_input.value;
         }
     }
+
+    // Logic for task completion rate
+    let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length;
+    let task_completion = document.querySelector(".task_completion_rate");
+    let completed_tasks = 0;
+    let checkboxes = document.querySelectorAll("input[type='checkbox']");
+    Array.from(checkboxes).forEach((checkbox) => {
+        if (checkbox.checked) {
+            completed_tasks++;
+        }
+    });
+    task_completion.innerHTML = TOtal_tasks + "/" + completed_tasks;
 });
-
-
