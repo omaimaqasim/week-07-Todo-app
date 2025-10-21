@@ -76,7 +76,7 @@ task_section.addEventListener("click", (e) => {
                     task_checkbox.checked = false;
                 }
             });
-        } 
+        }
         // If input already exists, save its value directly
         else {
             task_text.textContent = exist_input.value;
@@ -97,7 +97,7 @@ task_section.addEventListener("click", (e) => {
 
     // logic for task tracker
     let progress_track = document.querySelector(".progress_tracker")
-    let percent = TOtal_tasks===0 ? 0 : (completed_tasks / TOtal_tasks) * 100
+    let percent = TOtal_tasks === 0 ? 0 : (completed_tasks / TOtal_tasks) * 100
 
     progress_track.style.width = `${percent}%`
 
@@ -107,10 +107,13 @@ task_section.addEventListener("click", (e) => {
 });
 
 function deleteEmpty() {
-    let task =document.querySelector(".task")
+    let task = document.querySelector(".task")
     let emptySvg = document.querySelector(".empty")
     if (task_section.contains(task)) {
-        emptySvg.remove()
+        emptySvg.classList.add("hidden")
+    }
+    else {
+        emptySvg.classList.remove("hidden")
     }
 }
-// correct svg logic
+
