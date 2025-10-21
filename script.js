@@ -94,4 +94,23 @@ task_section.addEventListener("click", (e) => {
         }
     });
     task_completion.innerHTML = TOtal_tasks + "/" + completed_tasks;
+
+    // logic for task tracker
+    let progress_track = document.querySelector(".progress_tracker")
+    let percent = TOtal_tasks===0 ? 0 : (completed_tasks / TOtal_tasks) * 100
+
+    progress_track.style.width = `${percent}%`
+
+    deleteEmpty()
+
+
 });
+
+function deleteEmpty() {
+    let task =document.querySelector(".task")
+    let emptySvg = document.querySelector(".empty")
+    if (task_section.contains(task)) {
+        emptySvg.remove()
+    }
+}
+// correct svg logic
