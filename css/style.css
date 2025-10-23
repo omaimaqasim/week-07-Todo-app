@@ -175,6 +175,7 @@ body {
 .task button {
     width: 9px;
     height: 9px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

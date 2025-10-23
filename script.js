@@ -5,6 +5,7 @@ let task_input = document.querySelector(".task_input");
 let task_add_btn = document.querySelector(".task_add_btn");
 let task_section = document.querySelector(".task_section");
 
+
 // ==============================
 // ➕ ADD NEW TASK
 // ==============================
@@ -86,8 +87,8 @@ task_section.addEventListener("click", (e) => {
     // Logic for task completion rate
     let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length;
     let task_completion = document.querySelector(".task_completion_rate");
-    let completed_tasks = 0;
     let checkboxes = document.querySelectorAll("input[type='checkbox']");
+   let completed_tasks = 0;
     Array.from(checkboxes).forEach((checkbox) => {
         if (checkbox.checked) {
             completed_tasks++;
@@ -116,4 +117,16 @@ function deleteEmpty() {
         emptySvg.classList.remove("hidden")
     }
 }
+
+// let remarks = document.querySelector(".progress h1")
+// function updateRemarks() {
+     
+    
+//      if (!task_section.querySelector(".task")) {
+//         remarks.textContent = "Let’s start something today 💪"
+//      }
+//      else if(task_section.querySelector(".task") && completed_tasks===0 ){
+//           remarks.textContent = "Keep going! You can do it 💫"
+//      }
+// }
 
