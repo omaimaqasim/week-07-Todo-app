@@ -44,6 +44,8 @@ task_add_btn.addEventListener("click", () => {
     let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length;
     let task_completion = document.querySelector(".task_completion_rate");
     task_completion.textContent = "0/" + TOtal_tasks;
+
+    
 });
 
 // ==============================
@@ -88,7 +90,7 @@ task_section.addEventListener("click", (e) => {
     let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length;
     let task_completion = document.querySelector(".task_completion_rate");
     let checkboxes = document.querySelectorAll("input[type='checkbox']");
-   let completed_tasks = 0;
+    let completed_tasks = 0;
     Array.from(checkboxes).forEach((checkbox) => {
         if (checkbox.checked) {
             completed_tasks++;
@@ -103,6 +105,7 @@ task_section.addEventListener("click", (e) => {
     progress_track.style.width = `${percent}%`
 
     deleteEmpty()
+    updateRemarks(TOtal_tasks,completed_tasks)
 
 
 });
@@ -118,15 +121,15 @@ function deleteEmpty() {
     }
 }
 
-// let remarks = document.querySelector(".progress h1")
-// function updateRemarks() {
-     
-    
-//      if (!task_section.querySelector(".task")) {
-//         remarks.textContent = "Let’s start something today 💪"
-//      }
-//      else if(task_section.querySelector(".task") && completed_tasks===0 ){
-//           remarks.textContent = "Keep going! You can do it 💫"
-//      }
-// }
+let remarks = document.querySelector(".progress h1")
+let progress_tracker = document.querySelector(".progress_tracker")
+function updateRemarks(total_t,completed_t) {
+let percent = total_t === 0 ? 0 : (completed_t/ total_t) * 100;
+ 
+    if (total_t === 0) remarks.textContent = "Start now ";
+    else if (completed_t === 0) remarks.textContent = "Keep going ";
+    else if (percent < 50) remarks.textContent = "Good start ";
+    else if (percent < 100) remarks.textContent = "Almost there ";
+    else remarks.textContent = "Done 🎉";
+}
 
