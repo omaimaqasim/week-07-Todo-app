@@ -1,0 +1,20 @@
+ 1. remember that .closest(selector) first check if that element itself matches if
+not then it goes to its parents
+
+2.Event Delegation:
+It means putting one event listener on a parent element to handle events from its child elements using event bubbling.
+
+3. we use label to add text with form elements like input textarea etc as they dont 
+include text 
+
+
+.checked → is a special property of checkbox elements in JavaScript that tells you whether the checkbox is checked or not.
+
+remember that if you use for each argument same as inside any variable it cause error bc js will confuse seeing same variable
+
+as you know localstorage save data after reading dom so when you reload page and then save data it is saving
+new data as current dom localstorage over right previous one for this mistake first add data to dom then save whenever you want
+
+
+CORRECT THINKING
+“First rebuild DOM, then save updates”

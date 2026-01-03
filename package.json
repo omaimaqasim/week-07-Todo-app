@@ -1,0 +1,21 @@
+{
+  "name": "week-07-todo-list-app",
+  "version": "1.0.0",
+  "description": "A simple and beautiful **task management app** built using **HTML, CSS, and JavaScript**.  \r You can add, edit, delete, and track your daily tasks easily.",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omaimaqasim/week-07-Todo-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omaimaqasim/week-07-Todo-app/issues"
+  },
+  "homepage": "https://github.com/omaimaqasim/week-07-Todo-app#readme"
+}

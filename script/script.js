@@ -5,6 +5,10 @@ let task_input = document.querySelector(".task_input");
 let task_add_btn = document.querySelector(".task_add_btn");
 let task_section = document.querySelector(".task_section");
 
+window.addEventListener("DOMContentLoaded", () => {
+    loadTasksFromLocalStorage();
+    deleteEmpty()
+});
 
 // ==============================
 // ➕ ADD NEW TASK
@@ -44,6 +48,8 @@ task_add_btn.addEventListener("click", () => {
     let TOtal_tasks = Array.from(document.querySelectorAll(".task_section .task")).length;
     let task_completion = document.querySelector(".task_completion_rate");
     task_completion.textContent = "0/" + TOtal_tasks;
+   
+    saveTasksToLocalStorage()
 
     
 });
@@ -56,6 +62,7 @@ task_section.addEventListener("click", (e) => {
     // ---------- DELETE BUTTON ----------
     if (e.target.closest(".delete_btn")) {
         e.target.closest(".task").remove();
+        saveTasksToLocalStorage()
     }
 
     // ---------- EDIT BUTTON ----------
@@ -77,6 +84,7 @@ task_section.addEventListener("click", (e) => {
                     // When enter then checkbox will be cleared
                     let task_checkbox = task_text.closest(".task_type").querySelector("input");
                     task_checkbox.checked = false;
+                    saveTasksToLocalStorage()
                 }
             });
         }
@@ -120,6 +128,54 @@ function deleteEmpty() {
         emptySvg.classList.remove("hidden")
     }
 }
+
+// save task to local storage
+function saveTasksToLocalStorage(){
+    let task = []
+    document.querySelectorAll(".task_section .task").forEach(t=>{
+        let text = t.querySelector(".task_text").textContent
+        let completed = t.querySelector("input[type='checkbox']").checked
+        task.push({text :text, completed :completed})
+    })
+
+    localStorage.setItem("tasks",JSON.stringify(task));
+}
+
+// load task to dom
+function loadTasksFromLocalStorage() {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+tasks.forEach(task=>{
+
+     task_section.insertAdjacentHTML(
+            "beforeend",
+            `
+            <div class="task">
+                <div class="input_task">
+                    <div class="task_type">
+                        <input class="unique_back" type="checkbox"${task.completed ? "checked" : ""}>
+                        <span class="task_text">${task.text}</span>
+                    </div>
+                </div>
+
+                <button class="edit_btn">
+                    <img src="assets/edit.png" alt="icon" width="24" height="24">
+                </button>
+
+                <button class="delete_btn">
+                    <img src="assets/delete.png" alt="icon" width="18" height="18">
+                </button>
+            </div>
+            `
+        );
+})
+
+
+}
+
+
+
+
 
 let remarks = document.querySelector(".progress h1")
 let progress_tracker = document.querySelector(".progress_tracker")
