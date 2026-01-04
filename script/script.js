@@ -15,30 +15,11 @@ window.addEventListener("DOMContentLoaded", () => {
 // ==============================
 task_add_btn.addEventListener("click", () => {
     let current_task = task_input.value;
+    let completed;
 
     // Only add task if input is not empty
     if (current_task !== "") {
-        task_section.insertAdjacentHTML(
-            "beforeend",
-            `
-            <div class="task">
-                <div class="input_task">
-                    <div class="task_type">
-                        <input class="unique_back" type="checkbox">
-                        <span class="task_text">${current_task}</span>
-                    </div>
-                </div>
-
-                <button class="edit_btn">
-                    <img src="assets/edit.png" alt="icon" width="24" height="24">
-                </button>
-
-                <button class="delete_btn">
-                    <img src="assets/delete.png" alt="icon" width="18" height="18">
-                </button>
-            </div>
-            `
-        );
+        task_section.insertAdjacentHTML("beforeend", create_task(current_task,completed));
 
         // Clear input after adding
         task_input.value = "";
@@ -146,15 +127,20 @@ function loadTasksFromLocalStorage() {
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 tasks.forEach(task=>{
+     task_section.insertAdjacentHTML("beforeend",create_task(task.text,task.completed));
+})
 
-     task_section.insertAdjacentHTML(
-            "beforeend",
-            `
+
+}
+
+//create task
+ function create_task(text,completed=false){
+    return `
             <div class="task">
                 <div class="input_task">
                     <div class="task_type">
-                        <input class="unique_back" type="checkbox"${task.completed ? "checked" : ""}>
-                        <span class="task_text">${task.text}</span>
+                        <input class="unique_back" type="checkbox"${completed ? "checked" : ""}>
+                        <span class="task_text">${text}</span>
                     </div>
                 </div>
 
@@ -167,11 +153,7 @@ tasks.forEach(task=>{
                 </button>
             </div>
             `
-        );
-})
-
-
-}
+ }
 
 
 
